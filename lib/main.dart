@@ -7,9 +7,9 @@ void main() {
   runApp(
     DevicePreview(
       enabled: !kReleaseMode, // mati otomatis saat build release
-      defaultDevice: Devices.ios.iPhone11ProMax,
+      defaultDevice: Devices.ios.iPhone15ProMax,
       devices: [
-        Devices.ios.iPhone11ProMax,
+        Devices.ios.iPhone15ProMax,
       ],
       builder: (context) => const MainApp(),
     ),
