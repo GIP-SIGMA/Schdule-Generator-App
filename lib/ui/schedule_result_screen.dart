@@ -13,11 +13,16 @@ class ScheduleResultScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF0F172A), // dark navy base
 
-      /// ===== FUTURISTIC APPBAR =====
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text("AI Schedule Result"),
+        title: const Text(
+          "✨ AI Schedule Result",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.5,
+          ),
+        ),
         centerTitle: true,
         actions: [
           Container(
@@ -48,8 +53,7 @@ class ScheduleResultScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-
-            /// ===== COLOR HEADER =====
+            // Info header
             Container(
               width: double.infinity,
               margin: const EdgeInsets.fromLTRB(16, 10, 16, 12),
@@ -85,7 +89,7 @@ class ScheduleResultScreen extends StatelessWidget {
               ),
             ),
 
-            /// ===== RESULT CONTAINER =====
+            // Markdown viewer
             Expanded(
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -107,14 +111,14 @@ class ScheduleResultScreen extends StatelessWidget {
                     data: scheduleResult,
                     selectable: true,
                     padding: const EdgeInsets.all(20),
-
-                    /// ===== MARKDOWN STYLE =====
                     styleSheet: MarkdownStyleSheet(
+                      // Teks biasa
                       p: const TextStyle(
                         fontSize: 15,
                         height: 1.7,
                         color: Colors.white70,
                       ),
+                      // Heading
                       h1: const TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -133,15 +137,25 @@ class ScheduleResultScreen extends StatelessWidget {
                       strong: const TextStyle(color: Colors.white),
                       em: const TextStyle(color: Colors.white70),
 
-                      /// TABLE STYLE
+                      // === GAYA TABEL ===
                       tableBorder: TableBorder.all(
                         color: Colors.white24,
                         width: 1,
                       ),
-                      tableHeadAlign: TextAlign.center,
+                      tableHead: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      tableBody: const TextStyle(
+                        color: Colors.white70,
+                      ),
+                      tableHeadAlign: TextAlign.left, // rata kiri untuk header
                       tablePadding: const EdgeInsets.all(10),
-                      tableCellsPadding:
-                          const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                      tableCellsPadding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 12),
+
+                      // Atur lebar kolom (waktu, kegiatan, keterangan)
+                      tableColumnWidth: const FixedColumnWidth(100), // default, tapi kita override via markdown? tidak bisa, jadi dibiarkan fleksibel
                     ),
                   ),
                 ),
@@ -150,12 +164,11 @@ class ScheduleResultScreen extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            /// ===== ACTION BUTTONS =====
+            // Tombol aksi
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
               child: Row(
                 children: [
-                  /// BACK BUTTON
                   Expanded(
                     child: Container(
                       height: 52,
@@ -175,8 +188,6 @@ class ScheduleResultScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-
-                  /// COPY BUTTON
                   Expanded(
                     child: Container(
                       height: 52,
@@ -216,7 +227,6 @@ class ScheduleResultScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(height: 12),
           ],
         ),
